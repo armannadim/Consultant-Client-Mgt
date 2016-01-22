@@ -1,0 +1,62 @@
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="Dashboard">
+<meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+
+<title>A3N - Client Management System</title>
+
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+
+
+<?php /* Bootstrap core CSS */ ?>
+<?php echo HTML::style('css/bootstrap.css');; ?>
+
+<!--external css-->
+<?php echo HTML::style('css/font-awesome.css');; ?>
+
+
+<?php if(Route::getCurrentRoute()->getPath() === 'visit'): ?>
+<?php echo HTML::style('js/fullcalendar/bootstrap-fullcalendar.css');; ?>
+
+<?php endif; ?>
+
+
+<?php echo HTML::style('css/zabuto_calendar.css');; ?>
+
+<?php echo HTML::style('js/gritter/css/jquery.gritter.css');; ?>
+
+<?php echo HTML::style('css/lineicons-style.css');; ?>
+
+<!-- Custom styles for this template -->
+<?php echo HTML::style('css/style.css');; ?>
+
+<?php echo HTML::style('css/style-responsive.css');; ?>
+
+
+<?php echo HTML::style('css/selectize.css');; ?>
+
+<?php echo HTML::style('css/selectize.bootstrap3.css');; ?>
+
+<?php echo HTML::style('css/to-do.css');; ?>
+
+<?php echo HTML::style('css/custom.css');; ?>
+
+
+<?php echo HTML::script('js/chart-master/Chart.js');; ?>
+
+
+<?php echo HTML::style('//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css');; ?>
+
+
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+    <?php echo HTML::script('https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js');; ?>
+
+    <?php echo HTML::script('https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js');; ?>      
+<![endif]-->
+

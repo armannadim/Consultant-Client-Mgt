@@ -1,0 +1,64 @@
+<!--sidebar start-->
+<aside>
+    <div id="sidebar"  class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu" id="nav-accordion">
+
+            <p class="centered"><a href="profile.html"><img src="<?php echo asset('img/user/'.Auth::id().'.jpg'); ?>" class="img-circle" width="60"></a></p>
+            <h5 class="centered"><?php echo Auth::user()->name; ?></h5>
+ <?php /**/ $cur_path = Route::getCurrentRoute()->getPath() /**/ ?>
+            <li class="mt">
+                <a class="<?php echo $cur_path=='dashboard'?'active':''; ?>" href="<?php echo route('dashboard'); ?>">
+                    <i class="fa fa-dashboard"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+
+            <li class="sub-menu">
+                <a href="javascript:;" class="<?php echo $cur_path=='visit' || $cur_path=='addappointment' ?'active':''; ?>" >
+                    <i class="fa fa-calendar"></i>
+                    <span>Calendar</span>
+                </a>
+                <ul class="sub">
+                    <li><a  href="<?php echo route('visit'); ?>" class="<?php echo $cur_path=='visit'?'active':''; ?>">Appointments</a></li>
+                    <li><a  href="<?php echo route('addappointment'); ?>" class="<?php echo $cur_path=='addappointment'?'active':''; ?>">Add appointment</a></li>                    
+                </ul>
+            </li>
+
+            <li class="sub-menu">
+                <a href="javascript:;" class="<?php echo $cur_path=='client' || $cur_path=='addclient' ?'active':''; ?>">
+                    <i class="fa fa-user"></i>
+                    <span>Client</span>
+                </a>
+                <ul class="sub">
+                    <li><a  href="<?php echo route('client'); ?>" class="<?php echo $cur_path=='client'?'active':''; ?>">Clients</a></li>                    
+                    <li><a  href="<?php echo route('addclient'); ?>" class="<?php echo $cur_path=='addclient' ?'active':''; ?>">Add client</a></li>
+                </ul>
+            </li>
+            <?php if(Auth::user()->role==1): ?>            
+            <li class="sub-menu">
+                <a href="javascript:;" class="<?php echo $cur_path=='staff' || $cur_path=='addstaff' ?'active':''; ?>" >
+                    <i class="fa fa-user-md"></i>
+                    <span>Staff</span>
+                </a>
+                <ul class="sub">
+                    <li><a  href="<?php echo route('staff'); ?>" class="<?php echo $cur_path=='staff'?'active':''; ?>">Staffs</a></li>
+                    <li><a  href="<?php echo route('addstaff'); ?>" class="<?php echo $cur_path=='addstaff' ?'active':''; ?>">Add staff</a></li>                    
+                </ul>
+            </li>
+            <li class="sub-menu">
+                <a href="javascript:;" class="<?php echo $cur_path=='userconfig' || $cur_path=='appconfig' ?'active':''; ?>" >
+                    <i class="fa fa-tasks"></i>
+                    <span>Settings</span>
+                </a>
+                <ul class="sub">
+                    <li><a  href="<?php echo route('userconfig'); ?>" class="<?php echo $cur_path=='userconfig' ?'active':''; ?>">User Config</a></li>
+                    <li><a  href="<?php echo route('appconfig'); ?>" class="<?php echo $cur_path=='appconfig' ?'active':''; ?>">Application Config</a></li>
+                </ul>
+            </li>
+            <?php endif; ?>   
+        </ul>
+        <!-- sidebar menu end-->
+    </div>
+</aside>
+<!--sidebar end-->
