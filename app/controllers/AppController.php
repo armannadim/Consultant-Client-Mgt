@@ -242,6 +242,33 @@ class AppController extends BaseController
         return Redirect::back()->with('message', 'Appointment removed !');
     }
 
+
+    /* CONFIGURATION ACTIONS */
+
+    public function getConfigVariablesAction()
+    {
+
+    }
+
+    public function CreateConfigVarAction()
+    {
+
+    }
+
+    public function UpdateConfigAction($id)
+    {
+
+    }
+
+    public function DeleteConfigAction($id)
+    {
+
+    }
+
+
+
+
+
     /* END CRUD */
 
 

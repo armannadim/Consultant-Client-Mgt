@@ -14,23 +14,6 @@ class BaseController extends Controller {
         }
     }
 
-    /* CONFIGURATION ACTIONS */
-
-    public function getConfigVariablesAction() {
-        
-    }
-
-    public function CreateConfigVarAction() {
-        
-    }
-
-    public function UpdateConfigAction($id) {
-        
-    }
-
-    public function DeleteConfigAction($id) {
-        
-    }
 
     /* GET DATA FOR THE DROPDOWNLIST */
 
