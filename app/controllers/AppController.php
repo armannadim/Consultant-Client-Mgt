@@ -245,24 +245,37 @@ class AppController extends BaseController
 
     /* CONFIGURATION ACTIONS */
 
-    public function getConfigVariablesAction()
+    public function CreateConfigAction()
     {
-
-    }
-
-    public function CreateConfigVarAction()
-    {
-
+        $data = Request::all();
+        $client = new config();
+        $columns = Schema::getColumnListing('config');
+        foreach ($data as $key => $value) {
+            if (in_array($key, $columns)) {
+                $client->$key = $value;
+            }
+        }
+        $client->save();
+        return "config";
     }
 
     public function UpdateConfigAction($id)
     {
-
+        $data = Request::all();
+        $columns = Schema::getColumnListing('config');
+        $modify_column_name = strtolower($data['column']);
+        $value = $data['value'];
+        if (in_array($modify_column_name, $columns)) {
+            config::where('id', '=', $id)->update(array($modify_column_name => $value));
+            return $modify_column_name;
+        }
+        return $data;
     }
 
     public function DeleteConfigAction($id)
     {
-
+        Config::destroy($id);
+        return Redirect::back()->with('message', 'Config parameter removed !');
     }
 
 
@@ -357,6 +370,21 @@ class AppController extends BaseController
             ->addColumn('operations', '<a href="{{ URL::route( \'remove-client\', array( $id )) }}"><i class="fa fa-trash-o" style="color:red"></i></a> &nbsp;<a href="{{ URL::route( \'show-client\', array( $id )) }}"><i class="fa fa-edit" style="color:green"></i></a>')
             ->removeColumn('deleted_at')
             ->removeColumn('updated_at')
+            ->make();
+    }
+
+
+    /*
+     * getConfigAction - Returns datatables according to the requirements.
+     * Optional Input - Filter. This parameter filters the data to load from the database.
+     */
+    public function getConfigAction($filter = null)
+    {
+        $config = config::select(['config.id as id', 'config.param as param', 'config.value as value']);
+
+
+        return Datatables::of($config)
+            ->addColumn('operations', '<a href="{{ URL::route( \'removeConfig\', array( $id )) }}"><i class="fa fa-trash-o" style="color:red"></i></a>')
             ->make();
     }
 

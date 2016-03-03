@@ -7,10 +7,10 @@
 
 {{ HTML::script('js/jquery.validate.js'); }}
 {{ HTML::script('js/jquery.dataTables.editable.js'); }}
-<!--{{ HTML::script('js/jquery.dataTables.yadcf.js'); }}-->
+        <!--{{ HTML::script('js/jquery.dataTables.yadcf.js'); }}-->
 
 {{ HTML::script('js/bootstrap.min.js'); }}
-<!--{{-- HTML::script('js/query.dcjqaccordion.2.7.js'); --}}-->
+        <!--{{-- HTML::script('js/query.dcjqaccordion.2.7.js'); --}}-->
 
 {{ HTML::script('js/jquery.dcjqaccordion.2.7.js'); }}
 {{ HTML::script('js/jquery.scrollTo.min.js'); }}
@@ -22,14 +22,14 @@
 {{ HTML::script('js/calendar-conf-events.js'); }}
 @endif
 
-<!--common script for all pages-->
+        <!--common script for all pages-->
 {{ HTML::script('js/common-scripts.js'); }}
 
 {{ HTML::script('js/gritter/js/jquery.gritter.js'); }}
 {{ HTML::script('js/gritter-conf.js'); }}
 
 
-<!--script for this page-->
+        <!--script for this page-->
 {{ HTML::script('js/sparkline-chart.js'); }}
 {{ HTML::script('js/zabuto_calendar.js'); }}
 
@@ -42,12 +42,20 @@
 {{ HTML::script('js/app.js'); }}
 {{ HTML::script('js/jquery.expander.js'); }}
 <style type="text/css">
-    .leftAlign{text-align: left;}
-    .centerAlign{text-align: center;}
-    .rightAlign{text-align: right;}
+    .leftAlign {
+        text-align: left;
+    }
+
+    .centerAlign {
+        text-align: center;
+    }
+
+    .rightAlign {
+        text-align: right;
+    }
 </style>
 <script type="text/javascript">
-    $(document).ready(function() {
+    $(document).ready(function () {
         /*var unique_id = $.gritter.add({
          // (string | mandatory) the heading of the notification
          title: 'Welcome to Dashgum!',
@@ -64,17 +72,17 @@
          });
          return false;*/
     });
-    $(document).ready(function() {
+    $(document).ready(function () {
         $("#date-popover").popover({html: true, trigger: "manual"});
         $("#date-popover").hide();
-        $("#date-popover").click(function(e) {
+        $("#date-popover").click(function (e) {
             $(this).hide();
         });
         $("#my-calendar").zabuto_calendar({
-            action: function() {
+            action: function () {
                 return myDateFunction(this.id, false);
             },
-            action_nav: function() {
+            action_nav: function () {
                 return myNavFunction(this.id);
             },
             ajax: {
@@ -83,7 +91,7 @@
             },
             legend: [
                 {type: "text", label: "Special event", badge: "00"},
-                {type: "block", label: "Regular event", }
+                {type: "block", label: "Regular event",}
             ]
         });
         /* DATA TABLE */
@@ -99,17 +107,19 @@
                 {sData: '2', sName: 'User Full Name'},
                 {sData: '3', sName: 'Client'},
                 {sData: '4', sName: 'Client full name'},
-                {sData: '5', sName: 'visits', sClass: "input-group date", sId: "datetimepicker",
-                    "createdCell": function(td, cellData, rowData, row, col) {
+                {
+                    sData: '5', sName: 'visits', sClass: "input-group date", sId: "datetimepicker",
+                    "createdCell": function (td, cellData, rowData, row, col) {
                         $(td).attr('id', 'datetimepicker1');
                     }
                 },
                 {sData: '6', sName: 'Problem'},
-                {sData: '7', sName: 'Comments',
-                    render: function(sData, type, full, meta) {
+                {
+                    sData: '7', sName: 'Comments',
+                    render: function (sData, type, full, meta) {
                         if (sData !== null) {
                             return type === 'display' && sData.length > 40 ?
-                                    '<span title="' + sData + '">' + sData.substr(0, 38) + '...</span>' :
+                            '<span title="' + sData + '">' + sData.substr(0, 38) + '...</span>' :
                                     sData;
                         }
                         return "";
@@ -117,19 +127,17 @@
                 },
                 {sData: '8', sName: 'Actions', sClass: "centerAlign"},
             ],
-            "fnRowCallback": function(nRow, aData, iDisplayIndex) {
+            "fnRowCallback": function (nRow, aData, iDisplayIndex) {
                 $(nRow).attr("id", aData["id"]);
                 var CurrentDate = new Date();
                 var visit = new Date(aData[5].replace(/-/g, '/'));
-                if (CurrentDate > visit)
-                {
+                if (CurrentDate > visit) {
                     $(nRow).addClass(" pastVisit");
                 }
                 return nRow;
             }
         }).makeEditable({
-            sUpdateURL: function(value, settings)
-            {
+            sUpdateURL: function (value, settings) {
                 var columnId = oTableVisit.fnGetPosition(this)[2];
                 var sColumnTitle = oTableVisit.fnSettings().aoColumns[columnId].sName;
                 var rowId = $(this).closest('tr[id]').attr('id');
@@ -137,7 +145,7 @@
                     type: "POST",
                     url: '../modifyVisit/' + rowId,
                     data: "column=" + sColumnTitle + "&id=" + rowId + "&value=" + value,
-                    success: function() {
+                    success: function () {
                         oTableVisit.fnDraw();
                     }
                 })
@@ -149,17 +157,18 @@
                 null,
                 null,
                 null,
-                {/*tooltip: 'Click to change date and time',
-                 loadtext: 'loading...',
-                 type: 'datetimepicker',
-                 datetimepicker: {
-                 format: 'Y-m-d H:i:00',
-                 changeMonth: true,
-                 changeYear: true,
-                 showHour: true,
-                 showMinute: true,
-                 step: 15
-                 }*/
+                {
+                    /*tooltip: 'Click to change date and time',
+                     loadtext: 'loading...',
+                     type: 'datetimepicker',
+                     datetimepicker: {
+                     format: 'Y-m-d H:i:00',
+                     changeMonth: true,
+                     changeYear: true,
+                     showHour: true,
+                     showMinute: true,
+                     step: 15
+                     }*/
                 },
                 {},
                 {},
@@ -187,13 +196,12 @@
                 {mData: '12', sName: 'Status', sClass: "centerAlign"},
                 {mData: '13', name: 'Operation', searchable: false, sClass: "centerAlign"}
             ],
-            "fnRowCallback": function(nRow, aData, iDisplayIndex) {
+            "fnRowCallback": function (nRow, aData, iDisplayIndex) {
                 $(nRow).attr("id", aData["id"]); // Change row ID attribute to match database row id
                 return nRow;
             }
         }).makeEditable({
-            sUpdateURL: function(value, settings)
-            {
+            sUpdateURL: function (value, settings) {
                 var columnId = oTable.fnGetPosition(this)[2];
                 var sColumnTitle = oTable.fnSettings().aoColumns[columnId].sName;
                 var rowId = $(this).closest('tr[id]').attr('id');
@@ -201,7 +209,7 @@
                     type: "POST",
                     url: 'modifyStaff/' + rowId,
                     data: "column=" + sColumnTitle + "&id=" + rowId + "&value=" + value,
-                    success: function() {
+                    success: function () {
                         oTable.fnDraw();
                     }
                 })
@@ -219,7 +227,7 @@
                     type: 'select',
                     onblur: 'submit',
                     data: "{{ BaseController::getAllDocType() }}",
-                    sUpdateURL: function(value, settings) {
+                    sUpdateURL: function (value, settings) {
                         var columnId = oTable.fnGetPosition(this)[2];
                         var sColumnTitle = oTable.fnSettings().aoColumns[columnId].sName;
                         var rowId = $(this).closest('tr[id]').attr('id');
@@ -227,7 +235,7 @@
                             type: "POST",
                             url: 'modifyStaff/' + rowId,
                             data: "column=" + sColumnTitle + "&id=" + rowId + "&value=" + value,
-                            success: function() {
+                            success: function () {
                                 oTable.fnDraw();
                             }
                         })
@@ -245,7 +253,7 @@
                     type: 'select',
                     onblur: 'submit',
                     data: "{{ BaseController::getAllRole() }}",
-                    sUpdateURL: function(value, settings) {
+                    sUpdateURL: function (value, settings) {
                         var columnId = oTable.fnGetPosition(this)[2];
                         var sColumnTitle = oTable.fnSettings().aoColumns[columnId].sName;
                         var rowId = $(this).closest('tr[id]').attr('id');
@@ -253,7 +261,7 @@
                             type: "POST",
                             url: 'modifyStaff/' + rowId,
                             data: "column=" + sColumnTitle + "&id=" + rowId + "&value=" + value,
-                            success: function() {
+                            success: function () {
                                 oTable.fnDraw();
                             }
                         })
@@ -288,8 +296,7 @@
                 {mData: '14', sName: 'Operation', searchable: false, sClass: "centerAlign"}
             ]
         }).makeEditable({
-            sUpdateURL: function(value, settings)
-            {
+            sUpdateURL: function (value, settings) {
                 var columnId = oTableClient.fnGetPosition(this)[2];
                 var sColumnTitle = oTableClient.fnSettings().aoColumns[columnId].sName;
                 var rowId = $(this).closest('tr[id]').attr('id');
@@ -297,7 +304,7 @@
                     type: "POST",
                     url: 'modifyClient/' + rowId,
                     data: "column=" + sColumnTitle + "&id=" + rowId + "&value=" + value,
-                    success: function() {
+                    success: function () {
                         oTableClient.fnDraw();
                     }
                 })
@@ -314,7 +321,7 @@
                     type: 'select',
                     onblur: 'submit',
                     data: "{{ BaseController::getAllDocType() }}",
-                    sUpdateURL: function(value, settings) {
+                    sUpdateURL: function (value, settings) {
                         var columnId = oTableClient.fnGetPosition(this)[2];
                         var sColumnTitle = oTableClient.fnSettings().aoColumns[columnId].sName;
                         var rowId = $(this).closest('tr[id]').attr('id');
@@ -322,7 +329,7 @@
                             type: "POST",
                             url: 'modifyClient/' + rowId,
                             data: "column=" + sColumnTitle + "&id=" + rowId + "&value=" + value,
-                            success: function() {
+                            success: function () {
                                 oTableClient.fnDraw();
                             }
                         })
@@ -339,6 +346,41 @@
             ]
         });
 
+
+        var oTableConfig = $('#config-table').dataTable({
+            bProcessing: true,
+            bServerSide: true,
+            sAjaxSource: 'config',
+            sPaginationType: "full_numbers",
+            columns: [
+                {mData: '0', sName: 'id'},
+                {mData: '1', sName: 'param'},
+                {mData: '2', sName: 'value'},
+                {mData: '3', sName: 'operations', searchable: false, sClass: "centerAlign"}
+            ]
+        }).makeEditable({
+            sUpdateURL: function (value, settings) {
+                var columnId = oTableConfig.fnGetPosition(this)[2];
+                var sColumnTitle = oTableConfig.fnSettings().aoColumns[columnId].sName;
+                var rowId = $(this).closest('tr[id]').attr('id');
+                $.ajax({
+                    type: "POST",
+                    url: 'modifyConfig/' + rowId,
+                    data: "column=" + sColumnTitle + "&id=" + rowId + "&value=" + value,
+                    success: function () {
+                        oTableConfig.fnDraw();
+                    }
+                })
+                return value;
+            },
+            "aoColumns": [
+                null,
+                {},
+                {},
+                null
+            ]
+        });
+
         $('#datetimepicker1').datetimepicker({
             locale: 'es',
             daysOfWeekDisabled: [0, 6],
@@ -348,7 +390,7 @@
             format: "DD-MM-YYYY H:mm"
         });
         /* FORM Submit Guest */
-        $("form").submit(function(e) {
+        $("form").submit(function (e) {
             e.preventDefault();
             var postData = $(this).serializeArray();
             var formURL = $(this).attr("action");
@@ -357,19 +399,21 @@
                 url: formURL,
                 type: $(this).attr("method"),
                 data: postData,
-                success: function(data)
-                {
+                success: function (data) {
 
                     if (data === "mail") {
                         alert("Your message has been sent successfully.");
+                    }
+                    else if (data === "config") {
+                        alert("Data inserted successfully.");
+                        location.reload(true);
                     } else {
                         alert("Data inserted successfully.");
                     }
-                    //location.reload(true);
+
 
                 },
-                error: function()
-                {
+                error: function () {
                     alert("Something wrong. Contact with admin.");
                 }
             });
@@ -384,7 +428,7 @@
          */
         $('section.outbox').hide();
         $('section.compose-mail').hide();
-        $('ul.mail-nav li a').click(function() {
+        $('ul.mail-nav li a').click(function () {
             $('ul.mail-nav li').removeClass("active");
             $(this).parent().addClass("active");
             $('section.mail-main').hide();
@@ -392,7 +436,7 @@
             $('section.' + $(this).attr('class')).show();
         });
 
-        $('.btn-compose').click(function() {
+        $('.btn-compose').click(function () {
             $('ul.mail-nav li').removeClass("active");
             $('section.mail-main').hide();
             $('section.compose-mail').show();
@@ -401,15 +445,13 @@
         /* END MAIL */
 
 
-
-
         $('a.messages').expander({
             slicePoint: 80, //It is the number of characters at which the contents will be sliced into two parts.
             widow: 2,
             expandSpeed: 20, // It is the time in second to show and hide the content.
             userCollapseText: 'Read Less (-)' // Specify your desired word default is Less.
         });
-        $("span.message").text(function(index, currentText) {
+        $("span.message").text(function (index, currentText) {
             return currentText.substr(0, 60) + '...';
         });
     });
