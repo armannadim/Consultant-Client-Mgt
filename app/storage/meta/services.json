@@ -26,7 +26,8 @@
         "Illuminate\\Validation\\ValidationServiceProvider",
         "Illuminate\\View\\ViewServiceProvider",
         "Illuminate\\Workbench\\WorkbenchServiceProvider",
-        "Bllim\\Datatables\\DatatablesServiceProvider"
+        "Bllim\\Datatables\\DatatablesServiceProvider",
+        "Hailwood\\DatabaseConfigLoader\\DatabaseConfigLoaderServiceProvider"
     ],
     "eager": [
         "Illuminate\\Cookie\\CookieServiceProvider",
@@ -36,7 +37,8 @@
         "Illuminate\\Session\\SessionServiceProvider",
         "Illuminate\\View\\ViewServiceProvider",
         "Illuminate\\Workbench\\WorkbenchServiceProvider",
-        "Bllim\\Datatables\\DatatablesServiceProvider"
+        "Bllim\\Datatables\\DatatablesServiceProvider",
+        "Hailwood\\DatabaseConfigLoader\\DatabaseConfigLoaderServiceProvider"
     ],
     "deferred": {
         "artisan": "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider",

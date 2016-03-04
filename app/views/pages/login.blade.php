@@ -33,9 +33,10 @@
 
         <div id="login-page">
             <div class="container">
-
+                <h1 class="header" style="text-align: center">{{ DBconfig::get('config.Name') }}</h1>
                 <form class="form-login" action="{{ Route("login")}}" method="POST">
                     <h2 class="form-login-heading">sign in now</h2>
+
                     <div class="login-wrap">
                         <input name="username" type="text" class="form-control" placeholder="User ID" autofocus>
                         <br>
@@ -47,7 +48,7 @@
                             </span>
                         </label>
                         <button class="btn btn-theme btn-block" href="index.html" type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
-                        <hr>
+                        <!--<hr>
 
                         <div class="login-social-link centered">
                             <p>or you can sign in via your social network</p>
@@ -59,7 +60,7 @@
                             <a class="" href="#">
                                 Create an account
                             </a>
-                        </div>
+                        </div>-->
 
                     </div>
                 </form>

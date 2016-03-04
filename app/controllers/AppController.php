@@ -380,7 +380,8 @@ class AppController extends BaseController
      */
     public function getConfigAction($filter = null)
     {
-        $config = config::select(['config.id as id', 'config.param as param', 'config.value as value']);
+        $config = config::select(['config.id as id', 'config.key as key', 'config.value as value'])
+        ->where("config.environment", "pro");
 
 
         return Datatables::of($config)
