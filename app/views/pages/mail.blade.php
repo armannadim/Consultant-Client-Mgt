@@ -3,7 +3,7 @@
 <!-- **********************************************************************************************************************************************************
       MAIN CONTENT
       *********************************************************************************************************************************************************** -->
-@section('content')      
+@section('content')
 <!--main content start-->
 <section id="main-content">
     <section class="wrapper">
@@ -17,7 +17,7 @@
                         </a>
                         <ul class="nav nav-pills nav-stacked mail-nav">
                             <li class="active"><a class="inbox" href="#"> <i class="fa fa-inbox"></i> Inbox  <span class="label label-theme pull-right inbox-notification">{{ count(BaseController::getUnreadMsg(Auth::id())) }}</span></a></li>
-                            <li><a class="outbox" href="#"> <i class="fa fa-envelope-o"></i> Send Mail</a></li>                            
+                            <li><a class="outbox" href="#"> <i class="fa fa-envelope-o"></i> Send Mail</a></li>
                         </ul>
                     </div>
                 </section>
@@ -63,7 +63,7 @@
                     </header>
                     <div class="panel-body minimal">
                         <div class="mail-option">
-                            <div class="chk-all">
+                            <div class="chk-all col-md-2">
                                 <div class="pull-left mail-checkbox">
                                     <input type="checkbox" class="">
                                 </div>
@@ -81,12 +81,12 @@
                                 </div>
                             </div>
 
-                            <div class="btn-group">
+                            <div class="btn-group col-md-1">
                                 <a data-original-title="Refresh" data-placement="top" data-toggle="dropdown" href="#" class="btn mini tooltips">
                                     <i class=" fa fa-refresh"></i>
                                 </a>
                             </div>
-                            <div class="btn-group hidden-phone">
+                            <!--<div class="btn-group hidden-phone">
                                 <a data-toggle="dropdown" href="#" class="btn mini blue">
                                     More
                                     <i class="fa fa-angle-down "></i>
@@ -97,21 +97,21 @@
                                     <li class="divider"></li>
                                     <li><a href="#"><i class="fa fa-trash-o"></i> Delete</a></li>
                                 </ul>
-                            </div>
-                            <div class="btn-group">
+                            </div>-->
+                            <div class="btn-group col-md-6">
                                 <a data-toggle="dropdown" href="#" class="btn mini blue">
                                     Move to
                                     <i class="fa fa-angle-down "></i>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#"><i class="fa fa-pencil"></i> Mark as Read</a></li>
-                                    <li><a href="#"><i class="fa fa-ban"></i> Spam</a></li>
+                                    <li><a href="#"><i class="fa fa-folder-open"></i> Mark as Read</a></li>
+                                    <li><a href="#"><i class="fa fa-folder"></i> Mark as Unread</a></li>
                                     <li class="divider"></li>
                                     <li><a href="#"><i class="fa fa-trash-o"></i> Delete</a></li>
                                 </ul>
                             </div>
 
-                            <ul class="unstyled inbox-pagination">
+                            <!--<ul class="list-unstyled inbox-pagination col-md-3">
                                 <li><span>1-50 of 99</span></li>
                                 <li>
                                     <a class="np-btn" href="#"><i class="fa fa-angle-left  pagination-left"></i></a>
@@ -119,7 +119,7 @@
                                 <li>
                                     <a class="np-btn" href="#"><i class="fa fa-angle-right pagination-right"></i></a>
                                 </li>
-                            </ul>
+                            </ul>-->
                         </div>
                         <div class="table-inbox-wrap ">
                             <table class="table table-inbox table-hover">
@@ -178,7 +178,7 @@
                                     <i class=" fa fa-refresh"></i>
                                 </a>
                             </div>
-                            <div class="btn-group hidden-phone">
+                            <!--<div class="btn-group hidden-phone">
                                 <a data-toggle="dropdown" href="#" class="btn mini blue">
                                     More
                                     <i class="fa fa-angle-down "></i>
@@ -189,7 +189,7 @@
                                     <li class="divider"></li>
                                     <li><a href="#"><i class="fa fa-trash-o"></i> Delete</a></li>
                                 </ul>
-                            </div>
+                            </div>-->
                             <div class="btn-group">
                                 <a data-toggle="dropdown" href="#" class="btn mini blue">
                                     Move to
@@ -246,7 +246,7 @@
                             </form>
                         </h4>
                     </header>
-                    <div class="panel-body">                        
+                    <div class="panel-body">
                         <div class="compose-mail">
                             <form role="form-horizontal" method="post" action="{{ route('send-mail') }}">
                                 <div class="form-group">
@@ -266,10 +266,10 @@
                                     <input type="radio" name="viewable_to" value=""> No
                                 </div>
                                 <div class="compose-editor">
-                                    <textarea name="message" class="wysihtml5 form-control" rows="9"></textarea>                                    
+                                    <textarea name="message" class="wysihtml5 form-control" rows="9"></textarea>
                                 </div>
                                 <div class="compose-btn">
-                                    <button class="btn btn-theme btn-sm" type='submit'><i class="fa fa-check"></i> Send</button>                                    
+                                    <button class="btn btn-theme btn-sm" type='submit'><i class="fa fa-check"></i> Send</button>
                                 </div>
                             </form>
                         </div>
